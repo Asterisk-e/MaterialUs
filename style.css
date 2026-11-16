@@ -158,3 +158,19 @@ html.rumble body *:nth-child(5n):not(path):not(circle){translate:calc(var(--r4x,
 html.glitch header,html.glitch main{animation:glx .4s steps(2,end) 6}
 @keyframes glx{0%{filter:none;translate:0 0}50%{filter:hue-rotate(120deg) saturate(2.2);translate:-5px 0}100%{filter:none;translate:3px 0}}
 @media (prefers-reduced-motion:reduce){html.glitch header,html.glitch main{animation:none}}
+
+/* haunted tab */
+#haunt{position:fixed;inset:-80px;z-index:200;display:grid;place-items:center;background:radial-gradient(ellipse at center,rgb(150 0 0/.55) 0%,rgb(70 0 0/.82) 55%,rgb(0 0 0/.96) 100%);opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 0s 1.2s;cursor:pointer;overflow:hidden}
+#haunt.on{opacity:1;visibility:visible;transition:opacity .15s}
+#haunt .hv{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgb(0 0 0/.2) 0 2px,transparent 2px 4px);animation:hpulse 2.4s ease-in-out infinite;pointer-events:none}
+#haunt .hs{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 30%,rgb(0 0 0/.85));animation:hbreath 3s ease-in-out infinite;pointer-events:none}
+.ht{position:relative;isolation:isolate;margin:0;padding:0 5vw;text-align:center;font:800 clamp(44px,13vw,170px)/.95 Figtree,system-ui,sans-serif;color:#ff2a2a;letter-spacing:-.02em;text-shadow:0 0 18px #f00,0 0 60px #800;animation:hshake .09s steps(2,end) infinite}
+.ht::before,.ht::after{content:attr(data-t);position:absolute;inset:0;padding:0 5vw;pointer-events:none}
+.ht::before{color:#000;opacity:.8;z-index:-1;transform:translate(5px,4px);animation:hsplit .5s steps(3,end) infinite}
+.ht::after{color:#ff8a8a;opacity:.3;transform:translate(-3px,-2px);animation:hsplit .7s steps(3,end) infinite reverse}
+.hx{position:absolute;bottom:calc(8vh + env(safe-area-inset-bottom,0px));left:50%;translate:-50% 0;background:transparent;border:1px solid rgb(255 200 200/.35);color:rgb(255 200 200/.75);padding:10px 20px;border-radius:24px;font:600 14px Figtree,system-ui,sans-serif;cursor:pointer}
+@keyframes hshake{0%{translate:-6px 3px;rotate:-.8deg}25%{translate:5px -4px;rotate:.6deg}50%{translate:-3px -6px;rotate:-.3deg}75%{translate:7px 2px;rotate:1deg}100%{translate:-5px 5px;rotate:-1deg}}
+@keyframes hsplit{0%{translate:0 0}33%{translate:-4px 2px}66%{translate:3px -3px}100%{translate:0 0}}
+@keyframes hpulse{50%{opacity:.5}}
+@keyframes hbreath{50%{transform:scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.ht,.ht::before,.ht::after,#haunt .hv,#haunt .hs{animation:none}}

@@ -141,3 +141,10 @@ dialog::backdrop{background:rgb(0 0 0/.4)}dialog[open]{animation:dg .5s cubic-be
 dialog h3{font-size:22px}dialog p{margin:10px 0 18px;color:var(--osv)}dialog .btns{justify-content:flex-end}
 #snack{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:8px;padding:6px 8px 6px 20px;border-radius:16px;background:var(--os);color:var(--s);transform:translate(-50%,200%);transition:transform .5s cubic-bezier(.34,1.6,.5,1)}
 #snack.on{transform:translate(-50%,0)}#snack .btn{color:var(--pc);height:40px}
+
+.hero h1 span{pointer-events:auto;cursor:pointer;display:inline-block;user-select:none;-webkit-tap-highlight-color:transparent;transition:transform .4s cubic-bezier(.34,1.8,.5,1)}
+.hero h1 span:active{transform:scale(.9) rotate(-6deg)}
+.hero h1 span.spin{animation:sp 1.2s cubic-bezier(.34,1.5,.5,1)}
+@keyframes sp{to{transform:rotate(720deg)}}
+#np{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;display:flex;align-items:center;gap:8px;padding:6px 8px 6px 20px;border-radius:24px;background:var(--p);color:var(--op);transform:translate(-50%,-250%);transition:transform .5s cubic-bezier(.34,1.6,.5,1)}
+#np.on{transform:translate(-50%,0)}#np .btn{color:var(--op);height:40px}

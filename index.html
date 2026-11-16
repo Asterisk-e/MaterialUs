@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MaterialUs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<header>
+<svg class="logo" viewBox="-1.1 -1.1 2.2 2.2" aria-hidden="true"><path id="lp" fill="currentColor"/></svg>
+<b>MaterialUs</b>
+<div class="tl">Dark <button class="sw" role="switch" id="theme" aria-label="Dark mode" aria-checked="false"><span class="th"></span></button></div>
+</header>
+<main>
+<section class="stage">
+<canvas id="cv" aria-label="Bouncy shapes playground. Drag, throw or tap the shapes."></canvas>
+<div class="hud" id="hud"></div>
+<div class="hero"><h1>Material<span>Us</span></h1><p>Shapes you can feel. Tap, throw and toggle.</p></div>
+</section>
+<section class="panel">
+<div class="grid">
+<div class="row"><div>Gravity<small>Drop shapes to the floor</small></div><button class="sw" role="switch" data-k="gravity" aria-label="Gravity" aria-checked="true"><span class="th"></span></button></div>
+<div class="row"><div>Haptics<small>Vibrate on every bounce</small></div><button class="sw" role="switch" data-k="haptics" aria-label="Haptics" aria-checked="true"><span class="th"></span></button></div>
+<div class="row"><div>Sound<small>Soft ticks on impact</small></div><button class="sw" role="switch" data-k="sound" aria-label="Sound" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Magnet<small>Shapes chase your pointer</small></div><button class="sw" role="switch" data-k="magnet" aria-label="Magnet" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Tilt<small>Gravity follows your phone</small></div><button class="sw" role="switch" data-k="tilt" aria-label="Tilt" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Shake<small>Shake the phone to scatter shapes</small></div><button class="sw" role="switch" data-k="shake" aria-label="Shake" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Mic reactive<small>Clap or blow to jolt shapes</small></div><button class="sw" role="switch" data-k="mic" aria-label="Mic reactive" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Trails<small>Leave ghost trails</small></div><button class="sw" role="switch" data-k="trails" aria-label="Trails" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Keep awake<small>Stop the screen sleeping</small></div><button class="sw" role="switch" data-k="wake" aria-label="Keep awake" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Bounciness</div><input type="range" id="bn" min="40" max="95" value="78" aria-label="Bounciness"></div>
+<div class="row"><div>Seed color</div><div class="seeds" id="seeds"></div></div>
+</div>
+<p id="sensor" class="note" role="status">Turn on Tilt or Shake to use your phone’s motion sensors.</p>
+<div class="btns">
+<button class="btn" id="bSpawn">Spawn shapes</button>
+<button class="btn t" id="bMorph">Morph all</button>
+<button class="btn o" id="bShake">Shake</button>
+<button class="btn x" id="bReset">Reset</button>
+<button class="btn o" id="bFs">Fullscreen</button>
+</div>
+</section>
+<h2>Haptic lab</h2>
+<div class="btns" id="lab"></div>
+<h2>Shape library</h2>
+<div class="lib" id="lib"></div>
+<footer>Haptics use the Vibration API on Android, a Safari switch trick on iOS 17.4 and later, and gamepad rumble where available. Tilt and shake use the accelerometer and gyroscope, so they need HTTPS (GitHub Pages works). The Pixel 4’s Motion Sense radar isn’t exposed to websites. Keys: Space spawns, S shakes, arrows nudge. Long-press a shape to pop it.</footer>
+</main>
+<script src="script.js"></script></body></html>

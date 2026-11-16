@@ -148,3 +148,13 @@ dialog h3{font-size:22px}dialog p{margin:10px 0 18px;color:var(--osv)}dialog .bt
 @keyframes sp{to{transform:rotate(720deg)}}
 #np{position:fixed;left:50%;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;display:flex;align-items:center;gap:8px;padding:6px 8px 6px 20px;border-radius:24px;background:var(--p);color:var(--op);transform:translate(-50%,-250%);transition:transform .5s cubic-bezier(.34,1.6,.5,1)}
 #np.on{transform:translate(-50%,0)}#np .btn{color:var(--op);height:40px}
+
+/* easter eggs: rumble every element, glitch */
+html.rumble{overflow-x:hidden}
+html.rumble body *:not(path):not(circle){translate:calc(var(--r1x,0)*1px) calc(var(--r1y,0)*1px);rotate:calc(var(--r1r,0)*1deg)}
+html.rumble body *:nth-child(2n):not(path):not(circle){translate:calc(var(--r2x,0)*1px) calc(var(--r2y,0)*1px);rotate:calc(var(--r2r,0)*1deg)}
+html.rumble body *:nth-child(3n):not(path):not(circle){translate:calc(var(--r3x,0)*1px) calc(var(--r3y,0)*1px);rotate:calc(var(--r3r,0)*1deg)}
+html.rumble body *:nth-child(5n):not(path):not(circle){translate:calc(var(--r4x,0)*1px) calc(var(--r4y,0)*1px);rotate:calc(var(--r4r,0)*1deg)}
+html.glitch header,html.glitch main{animation:glx .4s steps(2,end) 6}
+@keyframes glx{0%{filter:none;translate:0 0}50%{filter:hue-rotate(120deg) saturate(2.2);translate:-5px 0}100%{filter:none;translate:3px 0}}
+@media (prefers-reduced-motion:reduce){html.glitch header,html.glitch main{animation:none}}

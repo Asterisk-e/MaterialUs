@@ -4,19 +4,20 @@
 <title>MaterialUs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3"></head><body>
+<link rel="stylesheet" href="style.css?v=4"></head><body>
 <header>
 <svg class="logo" viewBox="-1.1 -1.1 2.2 2.2" aria-hidden="true"><path id="lp" fill="currentColor"/></svg>
 <b>MaterialUs</b>
 <div class="tl">Dark <button class="sw" role="switch" id="theme" aria-label="Dark mode" aria-checked="false"><span class="th"></span></button></div>
 </header>
 <main>
+<div class="pgnav" role="tablist" aria-label="Sections"><i class="pgi"></i><button class="pgt" role="tab" aria-selected="true" data-pg="play">Playground</button><button class="pgt" role="tab" aria-selected="false" data-pg="comp">Components</button></div>
 <section class="stage">
 <canvas id="cv" aria-label="Bouncy shapes playground. Drag, throw or tap the shapes."></canvas>
 <div class="hud" id="hud"></div>
 <div class="hero"><h1>Material<span>Us</span></h1><p>Shapes you can feel. Tap, throw and toggle.</p></div>
 </section>
-<section class="panel">
+<div id="pg-play" class="pg"><section class="panel">
 <div class="grid">
 <div class="row"><div>Gravity<small>Drop shapes to the floor</small></div><button class="sw" role="switch" data-k="gravity" aria-label="Gravity" aria-checked="true"><span class="th"></span></button></div>
 <div class="row"><div>Haptics<small>Vibrate on every bounce</small></div><button class="sw" role="switch" data-k="haptics" aria-label="Haptics" aria-checked="true"><span class="th"></span></button></div>
@@ -33,6 +34,10 @@
 <div class="row"><div>Window slosh<small>Drag the browser window</small></div><button class="sw" role="switch" data-k="slosh" aria-label="Window slosh" aria-checked="false"><span class="th"></span></button></div>
 <div class="row"><div>Voice<small>Say shake, morph, boom, pop</small></div><button class="sw" role="switch" data-k="voice" aria-label="Voice" aria-checked="false"><span class="th"></span></button></div>
 <div class="row"><div>Camera wave<small>Wave a hand to push shapes</small></div><button class="sw" role="switch" data-k="cam" aria-label="Camera wave" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Permanent trails<small>Every shape leaves its own stamps</small></div><button class="sw" role="switch" data-k="stamp" aria-label="Permanent trails" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Trail spacing<small>How far apart the stamps are</small></div><input type="range" id="tsp" min="6" max="60" value="18" aria-label="Trail spacing"></div>
+<div class="row"><div>Glow<small>Soft light around every shape</small></div><button class="sw" role="switch" data-k="glow" aria-label="Glow" aria-checked="false"><span class="th"></span></button></div>
+<div class="row"><div>Rainbow shapes<small>Each shape drifts through colours</small></div><button class="sw" role="switch" data-k="rainbow" aria-label="Rainbow shapes" aria-checked="false"><span class="th"></span></button></div>
 <div class="row"><div>Bounciness</div><input type="range" id="bn" min="40" max="95" value="78" aria-label="Bounciness"></div>
 <div class="row"><div>Seed color</div><div class="seeds" id="seeds"></div></div>
 </div>
@@ -42,10 +47,14 @@
 <button class="btn t" id="bMorph">Morph all</button>
 <button class="btn o" id="bShake">Shake</button>
 <button class="btn x" id="bReset">Reset</button>
+<button class="btn x" id="bClear">Clear trails</button>
 <button class="btn o" id="bFs">Fullscreen</button>
 <button class="btn x" id="bShare">Share</button>
 </div>
-</section>
+</section></div>
+<div id="pg-comp" class="pg" hidden>
+<label class="tf cfind"><input id="cs" type="search" placeholder=" " autocomplete="off"><span>Find a component</span></label><p class="note" id="cs0" hidden>Nothing matches that.</p>
+<section class="cs" data-k="button buttons icon toggle split segmented tonal">
 <h2>Buttons</h2>
 <div class="demo"><button class="btn el">Elevated</button><button class="btn">Filled</button><button class="btn t">Tonal</button><button class="btn o">Outlined</button><button class="btn x">Text</button></div>
 <div class="demo"><button class="btn xs">Extra small</button><button class="btn sm">Small</button><button class="btn">Medium</button><button class="btn lg">Large</button><button class="btn xl">Extra large</button></div>
@@ -54,9 +63,13 @@
 <div class="grp sp"><button class="btn">Save</button><button class="btn" data-x aria-expanded="false" aria-label="More options">▾</button></div></div>
 <div class="demo"><button class="ib" aria-label="Edit">✎</button><button class="ib f" aria-label="Star">★</button><button class="ib t" aria-label="Menu">☰</button><button class="ib o" aria-label="Settings">⚙</button><button class="ib tg" aria-pressed="false" aria-label="Like">♥</button><button class="ib f bdg" data-n="0" aria-label="Spawn and count">+</button>
 <button class="ib tg" data-ms="0,2" aria-pressed="false" aria-label="Circle to flower"></button><button class="ib tg" data-ms="5,1" aria-pressed="false" aria-label="Squircle to cookie"></button><button class="ib tg" data-ms="6,4" aria-pressed="false" aria-label="Pentagon to burst"></button><button class="ib tg" data-ms="3,7" aria-pressed="false" aria-label="Clover to gem"></button></div>
+</section>
+<section class="cs" data-k="fab floating action speed dial">
 <h2>Floating action buttons</h2>
 <div class="demo"><button class="fab sm" aria-label="Add">+</button><button class="fab" aria-label="Edit">✎</button><button class="fab lg" aria-label="Sparkle">✦</button><button class="fab ext">✎ Compose</button>
 <div class="fm"><button class="fab" data-x aria-expanded="false" aria-label="Shape actions">+</button><div class="fi"><button class="fab" data-a="bSpawn">Spawn</button><button class="fab" data-a="bMorph">Morph</button><button class="fab" data-a="bShake">Shake</button></div></div></div>
+</section>
+<section class="cs" data-k="switch checkbox radio chip selection">
 <h2>Switches and selection</h2>
 <div class="demo"><button class="sw" role="switch" aria-checked="false" aria-label="Basic"><span class="th"></span></button><button class="sw" role="switch" aria-checked="true" aria-label="Basic on"><span class="th"></span></button><button class="sw ic" role="switch" aria-checked="false" aria-label="With icon"><span class="th"></span></button>
 <button class="sw ssw" role="switch" aria-checked="false" aria-label="Flower thumb"><span class="th" data-ms="0,2"></span></button><button class="sw ssw" role="switch" aria-checked="false" aria-label="Cookie thumb"><span class="th" data-ms="0,1"></span></button><button class="sw ssw" role="switch" aria-checked="false" aria-label="Burst thumb"><span class="th" data-ms="0,4"></span></button>
@@ -65,11 +78,15 @@
 <div class="demo" role="radiogroup" aria-label="Shape style"><label class="opt"><button class="rd" role="radio" aria-checked="false" data-sty="1"></button>Soft</label><label class="opt"><button class="rd" role="radio" aria-checked="false" data-sty="4"></button>Spiky</label><label class="opt"><button class="rd" role="radio" aria-checked="false" data-sty="0"></button>Round</label></div>
 <div class="demo"><button class="pl fc" aria-pressed="false" data-s="1">Cookie</button><button class="pl fc" aria-pressed="false" data-s="2">Flower</button><button class="pl fc" aria-pressed="false" data-s="4">Burst</button><button class="pl fc" aria-pressed="false" data-s="3">Clover</button>
 <span class="pl">Pixel 4 <button class="x" aria-label="Remove chip">×</button></span><button class="pl sg" data-scene="party">Party</button><button class="pl sg" data-scene="zen">Zen</button><button class="pl sg" data-scene="chaos">Chaos</button></div>
+</section>
+<section class="cs" data-k="slider progress loading field text input">
 <h2>Sliders, progress and fields</h2>
 <div class="demo col"><label class="sr">Size<input class="sl" type="range" min="50" max="150" value="100" step="5" data-sl="size"><output>100%</output></label>
 <label class="sr">Gravity<input class="sl" type="range" min="0" max="200" value="100" step="10" data-sl="grav"><output>100%</output></label>
 <div class="lp"><i id="lpi"></i></div><div class="demo"><button class="btn t" id="bCharge">Charge up</button><svg class="cps" viewBox="0 0 48 48" aria-label="Loading"><circle cx="24" cy="24" r="18"/></svg><span class="ldr" data-ms="0,1" role="img" aria-label="Loading"></span></div>
 <label class="tf"><input id="tfi" placeholder=" "><span>Type to tickle the shapes</span></label></div>
+</section>
+<section class="cs" data-k="tabs card menu dialog snackbar navigation surface">
 <h2>Navigation and surfaces</h2>
 <div class="demo"><div class="tabs" role="tablist"><i class="ti"></i><button class="tab" role="tab" aria-selected="true" data-mode="g">Gravity</button><button class="tab" role="tab" aria-selected="false" data-mode="f">Float</button><button class="tab" role="tab" aria-selected="false" data-mode="m">Magnet</button></div></div>
 <div class="cards"><div class="card e" tabindex="0" aria-expanded="false"><b>Elevated</b><p>Press and hold to squash the corners.</p><div class="more"><div><p>Tap again to fold it back up.</p></div></div></div>
@@ -77,13 +94,73 @@
 <div class="card o" tabindex="0" aria-expanded="false"><b>Outlined</b><p>Corners flip when open.</p><div class="more"><div><p>Open ones get a leaf shape.</p></div></div></div></div>
 <div class="demo"><div class="mw"><button class="btn o" id="mb" data-x aria-expanded="false">Morph menu ▾</button><div class="menu" role="menu"><button role="menuitem" data-m="1">Cookie</button><button role="menuitem" data-m="2">Flower</button><button role="menuitem" data-m="4">Burst</button></div></div>
 <button class="btn t" id="bDlg">Open dialog</button><button class="btn t" id="bSnack">Spawn with undo</button></div>
-<dialog id="dlg"><h3>Reset playground?</h3><p>All shapes will pop and a fresh set will drop in.</p><div class="btns"><button class="btn x" id="dc">Cancel</button><button class="btn" id="dr">Reset</button></div></dialog>
-<div id="snack" role="status"><span id="sm"></span><button class="btn x" id="su">Undo</button></div>
+
+
+</section>
+<section class="cs" data-k="volume sound audio music player seek slider meter level mute">
+<h2>Volume and music</h2>
+<div class="demo col wide">
+<div class="vrow"><button class="ib t" id="vmute" data-lv="3" aria-pressed="false" aria-label="Mute"><svg class="spk" viewBox="0 0 28 28" aria-hidden="true"><path d="M3 11v6h5l6 5V6l-6 5H3z"/><path class="w1" d="M17.5 10.5a5 5 0 010 7"/><path class="w2" d="M20.5 7.5a9 9 0 010 13"/><path class="mx" d="M18 10l7 8M25 10l-7 8"/></svg></button><div class="vol" id="vol" role="slider" tabindex="0" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div><output id="volo">100%</output></div>
+<div class="plr"><div class="plt"><div><b id="ptitle">Frontline (feat. Matrix)</b><small id="ptime">Press play. The shapes will dance.</small></div><div class="lvm" id="lvm" aria-hidden="true"></div></div><div class="prow"><button class="ib f" id="pplay" aria-label="Play">▶</button><input class="sk" id="pseek" type="range" min="0" max="1000" value="0" disabled aria-label="Seek"></div></div>
+</div></section>
+<section class="cs" data-k="compass sensor battery heading direction device north">
+<h2>Compass and sensors</h2>
+<div class="demo"><div class="cmp"><svg id="cmp" viewBox="-108 -108 216 216" role="img" aria-label="Compass"><g id="cmpd"><circle class="cmpr" r="96"/><g class="cmpk" id="cmpk"></g><g class="cmpl" id="cmpl"></g></g><path class="cmpf" d="M0 -97l8 -11h-16z"/><circle class="cmpc" r="6"/></svg>
+<div class="cmpt"><b id="cmph">N 0°</b><small id="cmpm">Facing your pointer. Use the device compass on a phone.</small><button class="btn t sm" id="cmpb">Use device compass</button></div></div>
+<div class="bat"><b>Battery</b><div class="lp"><i id="batb"></i></div><small id="batt">Battery info is not available in this browser.</small></div></div></section>
+<section class="cs" data-k="knob dial range slider stepper hue colour color rating stars size spawn">
+<h2>Dials, ranges and rating</h2>
+<div class="demo"><div class="knw"><div class="kn" id="knob" role="slider" tabindex="0" aria-label="Bounciness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="-50 -50 100 100" aria-hidden="true"><path class="kt" id="knt"/><path class="kv" id="knv"/><circle class="kc" r="27"/><line class="ki" id="kni" x1="0" y1="-9" x2="0" y2="-22"/></svg></div><small>Bounciness <output id="kno">0</output></small></div></div>
+<div class="demo col wide">
+<div><small class="lbl">Shape size range <output id="dro">85% to 115%</output></small><div class="dr" id="dr"><div class="drt"></div><input type="range" id="rmin" min="40" max="200" value="85" aria-label="Smallest shape size"><input type="range" id="rmax" min="40" max="200" value="115" aria-label="Largest shape size"></div></div>
+<div><small class="lbl">Colour hue</small><input class="sk hue" id="hues" type="range" min="0" max="360" value="265" aria-label="Colour hue"></div>
+<div class="stpr"><span class="lbl">Spawn amount</span><div class="stp"><button class="ib t" id="stpm" aria-label="Fewer shapes">−</button><output id="stpn">3</output><button class="ib t" id="stpp" aria-label="More shapes">+</button></div><button class="btn" id="stpg">Spawn</button></div>
+<div class="stpr"><span class="lbl">Rate the shapes</span><div class="stars" id="stars" role="radiogroup" aria-label="Rating"></div></div>
+</div></section>
+<section class="cs" data-k="fields text input textarea password select dropdown date picker calendar">
+<h2>Fields and pickers</h2>
+<div class="demo col wide">
+<label class="tf"><input id="f1" placeholder=" "><span>Outlined field</span></label>
+<label class="tf fl"><input id="f2" placeholder=" "><span>Filled field</span></label>
+<label class="tf ta"><textarea id="f3" maxlength="80" rows="3" placeholder=" "></textarea><span>Message to the shapes</span><em id="f3c">0 / 80</em></label>
+<label class="tf pw"><input id="f4" type="password" placeholder=" " autocomplete="off"><span>Password</span><button class="ib" id="f4b" type="button" aria-label="Show password">◉</button></label>
+<label class="tf sel"><select id="f5"><option value="-1">Mixed</option><option value="0">Round</option><option value="1">Cookie</option><option value="2">Flower</option><option value="3">Clover</option><option value="4">Burst</option><option value="5">Squircle</option><option value="6">Pentagon</option><option value="7">Gem</option></select><span>Shape style</span></label>
+<div class="cal" id="cal"></div>
+</div></section>
+<section class="cs" data-k="list navigation bar bottom sheet banner switch tabs mode">
+<h2>Lists, bars and sheets</h2>
+<div class="demo col wide">
+<div class="lst">
+<button class="li" data-run="bSpawn"><i class="lic">✦</i><span><b>Spawn shapes</b><small>Drop in a few new ones</small></span><span class="chev">›</span></button>
+<button class="li" data-run="bMorph"><i class="lic">↻</i><span><b>Morph all</b><small>Change every shape</small></span><span class="chev">›</span></button>
+<div class="li"><i class="lic">∞</i><span><b>Permanent trails</b><small>Shapes leave stamps behind</small></span><button class="sw" role="switch" data-k="stamp" aria-label="Permanent trails" aria-checked="false"><span class="th"></span></button></div>
+<div class="li"><i class="lic">✧</i><span><b>Glow</b><small>Soft light around shapes</small></span><button class="sw" role="switch" data-k="glow" aria-label="Glow" aria-checked="false"><span class="th"></span></button></div>
+<div class="li"><i class="lic">Aa</i><span><b>Typing rain</b><small>Keys fall with the shapes</small></span><button class="sw" role="switch" data-k="typing" aria-label="Typing rain" aria-checked="false"><span class="th"></span></button></div>
+</div>
+<nav class="nb" role="tablist" aria-label="Mode"><button class="ni" role="tab" aria-selected="true" data-nm="g"><span class="pill">↓</span><small>Gravity</small></button><button class="ni" role="tab" aria-selected="false" data-nm="f"><span class="pill">☁</span><small>Float</small></button><button class="ni" role="tab" aria-selected="false" data-nm="m"><span class="pill">⌖</span><small>Magnet</small></button><button class="ni" role="tab" aria-selected="false" data-nm="p"><span class="pill">✦</span><small>Party</small></button></nav>
+<p class="note" id="nbt" role="status">Mode: Gravity</p>
+</div>
+<div class="demo"><button class="btn t" id="bSheet">Open bottom sheet</button><button class="btn t" id="bBanner">Show banner</button></div>
+<div class="bnr" id="bnr" hidden role="status"><p>New shapes just dropped. Want to see them?</p><button class="btn x sm" id="bnrx">Dismiss</button><button class="btn sm" id="bnrg">Show me</button></div>
+</section>
+<section class="cs" data-k="timer stopwatch lap clock time">
+<h2>Timers</h2>
+<div class="demo"><div class="stw"><output id="swt">00:00.00</output><div class="btns"><button class="btn" id="swgo">Start</button><button class="btn t" id="swlap">Lap</button><button class="btn x" id="swrs">Reset</button></div><ol id="swl"></ol></div></div>
+</section>
+<section class="cs" data-k="haptic vibration lab">
 <h2>Haptic lab</h2>
 <div class="btns" id="lab"></div>
+</section>
+<section class="cs" data-k="shape library morph">
 <h2>Shape library</h2>
 <div class="lib" id="lib"></div>
+</section>
+</div>
+<dialog id="dlg"><h3>Reset playground?</h3><p>All shapes will pop and a fresh set will drop in.</p><div class="btns"><button class="btn x" id="dc">Cancel</button><button class="btn" id="dr">Reset</button></div></dialog>
+<div id="snack" role="status"><span id="sm"></span><button class="btn x" id="su">Undo</button></div>
+<div id="scrim" hidden></div>
+<div id="sheet" role="dialog" aria-label="Quick shapes" aria-hidden="true"><div class="grab"></div><h3>Quick shapes</h3><div class="btns"><button class="btn t" data-m="1">Cookie</button><button class="btn t" data-m="2">Flower</button><button class="btn t" data-m="4">Burst</button><button class="btn t" data-m="3">Clover</button></div><div class="btns" style="margin-top:14px"><button class="btn" id="sheetx">Done</button></div></div>
 <footer><b>Every input.</b> Mouse: drag, throw, click, double-click for a shockwave, right-click to recolor, wheel to resize, hover to nudge. Touch: drag, throw, tap, double-tap, pinch a shape, hold and release to pop. Pen pressure squashes shapes. Keys: Space, S, M, R, G, B, 1 to 8, arrows. Gamepad: left stick tilts gravity, A spawns, B shakes, X morphs, Y booms. Phone: tilt, shake, sound, vibration. Camera: wave. Voice: say a command. Scrolling the page jostles the shapes. Haptics use the Vibration API on Android, a Safari switch trick on iOS 17.4 and later, and gamepad rumble. Sensors need HTTPS. The Pixel 4’s Motion Sense radar isn’t exposed to websites, so camera wave is the stand-in.</footer>
 </main>
 <div id="np" role="status"><span>Now playing: Frontline (feat. Matrix)</span><button class="btn x" id="npx">Stop</button></div>
-<script src="frontline-env.js?v=3"></script><script src="flatout-env.js?v=3"></script><script src="script.js?v=3"></script></body></html>
+<script src="frontline-env.js?v=4"></script><script src="flatout-env.js?v=4"></script><script src="script.js?v=4"></script><script src="components.js?v=4"></script></body></html>
